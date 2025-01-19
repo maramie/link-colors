@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Matching Activity</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 20px;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .header img {
+            max-width: 150px;
+            height: auto;
+        }
+        .colored-link {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        .answer {
+            display: flex;
+            justify-content: center;
+            margin: 10px 0;
+        }
+        .answer div {
+            margin: 0 10px;
+            padding: 10px 20px;
+            border: 1px solid #ccc;
+            cursor: pointer;
+        }
+        .colored {
+            color: white;
+            font-weight: bold;
+        }
+        .instructions {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/d/d2/%D8%B4%D8%B9%D8%A7%D8%B1_%D8%A7%D9%84%D9%85%D8%A4%D8%B3%D8%B3%D8%A9_%D8%A7%D9%84%D8%B9%D8%A7%D9%85%D8%A9_%D9%84%D9%84%D8%AA%D8%AF%D8%B1%D9%8A%D8%A8_%D8%A7%D9%84%D9%85%D9%87%D9%86%D9%8A_%D9%88%D8%A7%D9%84%D8%AA%D9%82%D9%86%D9%8A_%28%D8%A7%D9%84%D8%B3%D8%B9%D9%88%D8%AF%D9%8A%D8%A9%29.jpg" alt="شعار المؤسسة العامة للتدريب التقني والمهني">
+    </div>
+
+    <h1>مكونات عنوان الموقع</h1>
+    <p class="instructions">اضغطي على كل مصطلح لتلوينه بنفس لون الجزء المطابق له في الرابط أعلاه.</p>
+
+    <div class="colored-link">
+        <span style="color: green;">https</span><span style="color: blue;">://www.</span><span style="color: red;">Google</span><span style="color: orange;">.com</span>
+    </div>
+
+    <div class="answer">
+        <div data-colors="red,orange,green,blue">اسم الموقع</div>
+        <div data-colors="green,blue,red,orange">البروتوكول</div>
+        <div data-colors="orange,red,blue,green">امتداد</div>
+        <div data-colors="blue,green,orange,red">الشبكة العنكبوتية</div>
+    </div>
+
+    <script>
+        // Event listener for answer clicks
+        document.querySelectorAll('.answer div').forEach(div => {
+            let colors = div.getAttribute('data-colors').split(',');
+            let currentIndex = 0;
+
+            div.addEventListener('click', () => {
+                // Cycle through the colors
+                const color = colors[currentIndex];
+                div.style.backgroundColor = color;
+                div.style.color = 'white';
+                currentIndex = (currentIndex + 1) % colors.length; // Move to the next color
+            });
+        });
+    </script>
+
+</body>
+</html>
+
